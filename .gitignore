@@ -1,0 +1,4 @@
+01-Docker/frontend/.env-sample
+01-Docker/frontend/node_modules
+01-Docker/backend/node_modules
+01-Docker/backend/.env.template
