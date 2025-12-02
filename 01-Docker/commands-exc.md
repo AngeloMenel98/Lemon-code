@@ -20,32 +20,32 @@ docker run -d \
 
 - Le agregue a la variable global el username y password
 
-![alt text](image-1.png)
+![alt text](images/image-1.png)
 
 - Levantando el servidor backend localmente:
 
-![alt text](image.png)
+![alt text](images/image.png)
 
 ---
 
 ### Prueba REST Client
 
 - Se enviaron 2 request desde el `client.http` al contenedor del mongodb
-- En la primera imagen vemos los datos persistidos dentro del contenedor mediante un POST, en la segunda es el GET de todas las clases.
+- En la primera images/imagen vemos los datos persistidos dentro del contenedor mediante un POST, en la segunda es el GET de todas las clases.
 
-![alt text](image-3.png)
+![alt text](images/image-3.png)
 
-![alt text](image-2.png)
+![alt text](images/image-2.png)
 
 ## Reto 2: Dockerizar backend
 
 #### Crear un Dockerfile
 
-![alt text](image-4.png)
+![alt text](images/image-4.png)
 
-#### Construir la imagen usando el Dockerfile
+#### Construir la images/imagen usando el Dockerfile
 
-- Para construir la imagen, ejecuto el siguiente comando:
+- Para construir la images/imagen, ejecuto el siguiente comando:
 
   ```bash
   docker build -t classes-backend:0.0.1 .
@@ -53,7 +53,7 @@ docker run -d \
 
 #### Verificar conexion con MongoDB container
 
-- Para ello, lo que hice fue crearme una network y luego crear el contenedor de la imagen del backend, ademas de asignarle la network al mongodb container.
+- Para ello, lo que hice fue crearme una network y luego crear el contenedor de la images/imagen del backend, ademas de asignarle la network al mongodb container.
 
   ```bash
   docker network create db-back
@@ -65,13 +65,13 @@ docker run -d \
 
 #### Crear un Dockerfile para el frontend
 
-![alt text](image-5.png)
+![alt text](images/image-5.png)
 
 ---
 
-#### Construir la imagen usando el Dockerfile
+#### Construir la images/imagen usando el Dockerfile
 
-- Para construir la imagen, ejecuto el siguiente comando:
+- Para construir la images/imagen, ejecuto el siguiente comando:
 
   ```bash
   docker build -t classes-frontend:0.0.1 .
@@ -103,11 +103,11 @@ docker run -d \
 
 #### Configurar las variables de entorno para conectarse al backend en http://class-back:5000/api/classes
 
-## ![alt text](image-7.png)
+## ![alt text](images/image-7.png)
 
 #### Acceder a la interfaz desde el navegador en el puerto 3000
 
-![alt text](image-6.png)
+![alt text](images/image-6.png)
 
 ---
 
@@ -115,10 +115,10 @@ docker run -d \
 
 #### Todos los servicios corriendo (docker-compose ps)
 
-![alt text](image-8.png)
+![alt text](images/image-8.png)
 
 ---
 
 #### Captura del docker-compose levantado:
 
-![alt text](image-9.png)
+![alt text](images/image-9.png)
