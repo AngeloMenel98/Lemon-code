@@ -60,3 +60,65 @@ docker run -d \
 
   docker run -d --name class-back --network db-back -p 5000:5000 class-back:0.0.1
   ```
+
+## Reto 3: Dockerizar FrontEnd
+
+#### Crear un Dockerfile para el frontend
+
+![alt text](image-5.png)
+
+---
+
+#### Construir la imagen usando el Dockerfile
+
+- Para construir la imagen, ejecuto el siguiente comando:
+
+  ```bash
+  docker build -t classes-frontend:0.0.1 .
+  ```
+
+---
+
+#### Ejecutar el frontend en un contenedor en la red Docker
+
+- Para ello me creo una nueva network:
+
+  ```bash
+  docker network create back-front
+  ```
+
+- Luego conecto el nuevo network al backend:
+
+  ```bash
+  docker network connect back-front class-back
+  ```
+
+- Ejecutoe contenedor del frontend:
+
+  ```bash
+  docker run -d --name class-front --network back-front -p 3000:3000 class-front:0.0.1
+  ```
+
+---
+
+#### Configurar las variables de entorno para conectarse al backend en http://class-back:5000/api/classes
+
+## ![alt text](image-7.png)
+
+#### Acceder a la interfaz desde el navegador en el puerto 3000
+
+![alt text](image-6.png)
+
+---
+
+## Reto 4: Docker Compose
+
+#### Todos los servicios corriendo (docker-compose ps)
+
+![alt text](image-8.png)
+
+---
+
+#### Captura del docker-compose levantado:
+
+![alt text](image-9.png)

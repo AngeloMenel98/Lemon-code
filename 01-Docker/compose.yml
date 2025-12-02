@@ -1,0 +1,48 @@
+version: "3.9"
+
+services:
+  class-back:
+    image: class-back:0.0.1
+    container_name: class-back
+    build:
+      context: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      - DATABASE_URL=mongodb://admin:admin123@mongodb:27017
+    networks:
+      - db-back
+      - back-front
+    depends_on:
+      - mongodb
+
+  class-front:
+    image: class-front:0.0.1
+    container_name: class-front
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - API_URI=http://class-back:5000/api/classes
+    networks:
+      - back-front
+    depends_on:
+      - class-back
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin123
+    networks:
+      - db-back
+
+networks:
+  back-front:
+    driver: bridge
+  db-back:
+    driver: bridge
